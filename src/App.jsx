@@ -23,34 +23,48 @@ function App() {
           <Row className="month">
             <Col xs={{offset: 2}}><h2>{months[month]}</h2></Col>
           </Row>
-          <Container className='scrollContainer'>
-            <Row>
-              <Col xs={{offset: 2}} className='dates'>
-                  {dateRow.map(item => {
-                    return(
-                      <div>{item}</div>
-                    )
-                  })}
-              </Col>
-            </Row>
-            {habits.map(goal => {
-              return(
-                <Row className='habitRow'>
-                  <Col className='description' xs={2}>
-                    <h4>{goal}</h4>
-                  </Col>
-                  <div>
-                    <div className='habitLine'>
-                      {dateRow.map(index => {
-                        return(
-                          <span className='circle' key={index}></span>
-                        )
-                      })}
+
+          <Container className="d-flex">
+            <Col xs={3} className='d-flex flex-column'>
+              <div className='descriptionBox'> 
+                {habits.map(goal => {
+                  return(
+                    <Row className='description'>
+                        <h4>{goal}</h4>
+                    </Row>
+                  )
+                })}
+              </div> 
+            </Col>
+            <Col className='scrollContainer'>
+              <Row>
+                <Col className='dates'>
+                    {dateRow.map(item => {
+                      return(
+                        <div>{item}</div>
+                      )
+                    })}
+                </Col>
+              </Row>
+              {habits.map(goal => {
+                return(
+                  <Row className='habitRow'>
+                    {/* <Col className='description' xs={2}>
+                      <h4>{goal}</h4>
+                    </Col> */}
+                    <div>
+                      <div className='habitLine'>
+                        {dateRow.map(index => {
+                          return(
+                            <span className='circle' key={index}></span>
+                          )
+                        })}
+                      </div>
                     </div>
-                  </div>
-                </Row>
-              )
-            })}
+                  </Row>
+                )
+              })}
+            </Col>
           </Container>
         </Container>
       </body>

@@ -46,6 +46,18 @@ header {
   flex: none;
 }
 
+.descriptionBox {
+  margin-top: 40px;
+}
+
+.description {
+  min-height: 45px;
+  padding: 15px 0px 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
 .habitRow {
   flex-wrap: nowrap !important;
 }
