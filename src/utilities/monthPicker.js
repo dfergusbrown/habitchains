@@ -19,3 +19,9 @@ export const months = [
     "November",
     "December"
 ];
+
+
+export let dateRow = []
+for (let i = 1; i <= lastdate; i++) {
+    dateRow.push(i)
+}
