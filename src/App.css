@@ -1,0 +1,69 @@
+.body {
+  background-color: #242424;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+header {
+  background-color: white;
+  height: 10vh;
+  width: 100vw;
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: dimgrey;
+  float: right;
+  margin: 20px;
+}
+
+/* BODY */
+
+.habitBody {
+  overflow: scroll;
+  margin-right: 0px !important;
+}
+
+.month {
+  text-align: center;
+}
+.dates {
+  display: flex;
+}
+
+.dates div {
+  width: 30px;
+  height: 30px;
+  margin: 5px 10px;
+  text-align: center;
+  flex: none;
+}
+
+.habitRow {
+  flex-wrap: nowrap !important;
+}
+
+.habitLine {
+  background-color: gray;
+  width: fit-content;
+  height: 45px;
+  margin: 10px 0px;
+  align-items: center;
+  display: flex;
+  flex-grow: 3;
+}
+
+.circle {
+  background-color: white;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px 10px;
+}
