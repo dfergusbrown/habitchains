@@ -19,33 +19,39 @@ function App() {
         <div className='avatar'></div>
       </header>
       <body className='body'>
-        <Container className='habitBody'>
+        <Container fluid>
           <Row className="month">
             <Col xs={{offset: 2}}><h2>{months[month]}</h2></Col>
           </Row>
-          <Row>
-            <Col xs={{offset: 2}} className='dates'>
-                {dateRow.map(item => {
-                  return(
-                    <div>{item}</div>
-                  )
-                })}
-            </Col>
-          </Row>
-          {habits.map(goal => {
-            return(
-              <Row className='habitRow'>
-                <Col className='description' xs={2}><h4>{goal}</h4></Col>
-                <Col className='habitLine'>
-                  {dateRow.map(index => {
+          <Container className='scrollContainer'>
+            <Row>
+              <Col xs={{offset: 2}} className='dates'>
+                  {dateRow.map(item => {
                     return(
-                      <div className='circle' key={index}></div>
+                      <div>{item}</div>
                     )
                   })}
-                </Col>
-              </Row>
-            )
-          })}
+              </Col>
+            </Row>
+            {habits.map(goal => {
+              return(
+                <Row className='habitRow'>
+                  <Col className='description' xs={2}>
+                    <h4>{goal}</h4>
+                  </Col>
+                  <div>
+                    <div className='habitLine'>
+                      {dateRow.map(index => {
+                        return(
+                          <span className='circle' key={index}></span>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </Row>
+              )
+            })}
+          </Container>
         </Container>
       </body>
     </>

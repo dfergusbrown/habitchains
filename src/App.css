@@ -26,14 +26,14 @@ header {
 
 /* BODY */
 
-.habitBody {
-  overflow: scroll;
-  margin-right: 0px !important;
-}
-
 .month {
   text-align: center;
 }
+
+.scrollContainer {
+  overflow: scroll;
+}
+
 .dates {
   display: flex;
 }
@@ -50,14 +50,17 @@ header {
   flex-wrap: nowrap !important;
 }
 
+.habitRowContainer {
+  overflow: auto;
+}
+
 .habitLine {
   background-color: gray;
-  width: fit-content;
+  width: min-content;
   height: 45px;
   margin: 10px 0px;
   align-items: center;
   display: flex;
-  flex-grow: 3;
 }
 
 .circle {
