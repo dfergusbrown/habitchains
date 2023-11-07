@@ -1,8 +1,27 @@
 import { months, month, dateRow } from '../utilities/monthPicker';
-import { habits } from "../utilities/habits";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import AddModal from './AddModal';
+import { useState, useReducer } from 'react';
+
 
 const HabitLines = () => {
+    const habitList = ["Drink Water", "Exercise", "Journal", "Do homework", "Make dinner"]
+    const [habits, setHabit] = useState(habitList)
+
+    function addHabit (newHabit) {
+        setHabit([...habits, newHabit])
+    }
+
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    let props = {
+        show,
+        handleClose,
+        handleShow
+    }
 
     return(
         <Container fluid>
@@ -48,6 +67,16 @@ const HabitLines = () => {
                 })}
             </Col>
             </Container>
+            <Row>
+                <Col className='d-flex justify-content-center'>
+                    <Button variant="light" id="addButton" onClick={handleShow}>+</Button>
+                </Col>
+                <AddModal 
+                    handleClose={handleClose} 
+                    show={show}
+                    addHabit={addHabit}
+                />
+            </Row>
         </Container>
 
     )
