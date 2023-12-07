@@ -2,6 +2,7 @@ import { months, month, dateRow } from '../utilities/monthPicker';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import AddModal from './AddModal';
 import { useState, useReducer } from 'react';
+import DatesnDots from './Dates&Dots';
 
 
 const HabitLines = () => {
@@ -40,32 +41,7 @@ const HabitLines = () => {
                 })}
                 </div> 
             </Col>
-            <Col className='scrollContainer'>
-                <Row>
-                    <Col className='dates'>
-                        {dateRow.map(item => {
-                        return(
-                            <div>{item}</div>
-                        )
-                        })}
-                    </Col>
-                </Row>
-                {habits.map(goal => {
-                    return(
-                    <Row className='habitRow' key={goal}>
-                        <div>
-                        <div className='habitLine'>
-                            {dateRow.map(index => {
-                            return(
-                                <span className='circle' key={index}></span>
-                            )
-                            })}
-                        </div>
-                        </div>
-                    </Row>
-                    )
-                })}
-            </Col>
+            <DatesnDots habits={habits} dateRow={dateRow}/>
             </Container>
             <Row>
                 <Col className='d-flex justify-content-center'>
