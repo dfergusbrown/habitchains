@@ -6,8 +6,8 @@ const Descriptions = ({habits}) => {
       <div className="descriptionBox">
         {habits.map((goal) => {
           return (
-            <Row className="description">
-              <h4 key={goal}>{goal}</h4>
+            <Row className="description" key={goal}>
+              <h4>{goal}</h4>
             </Row>
           );
         })}
