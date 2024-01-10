@@ -28,6 +28,7 @@ const DatesnDots = ({habits, dateRow}) => {
                                 setButtonState(false) :
                                 setButtonState(true)
                             }
+                            
                             return(
                                 <span 
                                     className='circle' 

@@ -1,9 +1,6 @@
 let date = new Date();
 let year = date.getFullYear()
-export let month = date.getMonth()
-
-// Get the last date of the month
-export let lastdate = new Date(year, month+1, 0).getDate()
+let monthNumber = date.getMonth()
 
 export const months = [
     "January",
@@ -19,6 +16,13 @@ export const months = [
     "November",
     "December"
 ];
+export let currentMonth = months[monthNumber]
+
+// Get the last date of the month
+export let lastdate = new Date(year, monthNumber+1, 0).getDate()
+
+
+
 
 
 export let dateRow = []

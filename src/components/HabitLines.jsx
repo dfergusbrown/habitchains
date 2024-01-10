@@ -1,12 +1,17 @@
-import { months, month, dateRow } from "../utilities/monthPicker";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import AddModal from "./AddModal";
-import { useState, useReducer, useEffect } from "react";
+import { months, currentMonth, dateRow } from "../utilities/monthPicker";
+import { Container, Row, Col } from "react-bootstrap";
+import Dropdown from 'react-bootstrap/Dropdown';
+import AddModal from "./modal/AddModal";
+import { useState, useEffect } from "react";
 import DatesnDots from "./Dates&Dots";
 import Descriptions from "./Descriptions";
-import ModalButton from "./ModalButton";
+import ModalButton from "./modal/ModalButton";
 
 const HabitLines = () => {
+  /* Month Picker */
+  const [month, setMonth] = useState(currentMonth)
+
+  /* Set Habits */
   let habitList = [];
   const [habits, setHabit] = useState(habitList);
 
@@ -18,6 +23,7 @@ const HabitLines = () => {
     })
   },[])
 
+  /* Modal */
   function addHabit(newHabit) {
     setHabit([...habits, newHabit]);
   }
@@ -28,9 +34,11 @@ const HabitLines = () => {
 
   return (
     <Container fluid>
-      <Row className="month">
+      <Row className="month mb-3">
         <Col xs={{ offset: 2 }}>
-          <h2>{months[month]}</h2>
+          <Dropdown>
+            <Dropdown.Toggle variant="dark" size="lg">{month}</Dropdown.Toggle>
+          </Dropdown>
         </Col>
       </Row>
       <Container className="d-flex">
