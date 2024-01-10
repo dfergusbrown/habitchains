@@ -11,9 +11,9 @@ function App() {
       <header>
         <div className='avatar'></div>
       </header>
-      <body className='body'>
+      <div className='mainBody'>
         <HabitLines />
-      </body>
+      </div>
     </>
   )
 }
