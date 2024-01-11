@@ -1,15 +1,25 @@
-import { months, currentMonth, dateRow } from "../utilities/monthPicker";
-import { Container, Row, Col } from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown';
+import { months, currentMonth, years, currentYear, dateRow } from "../utilities/monthPicker";
+import { Container, Row } from "react-bootstrap";
 import AddModal from "./modal/AddModal";
 import { useState, useEffect } from "react";
 import DatesnDots from "./Dates&Dots";
 import Descriptions from "./Descriptions";
 import ModalButton from "./modal/ModalButton";
+import MonthDropdown from "./dropdowns/monthDropdown";
+import YearDropdown from "./dropdowns/yearDropdown";
 
 const HabitLines = () => {
   /* Month Picker */
   const [month, setMonth] = useState(currentMonth)
+  const changeMonth = (input) => {
+    setMonth(input)
+  }
+
+  /* Year Picker */
+  const [year, setYear] = useState(currentYear)
+  const changeYear = (input) => {
+    setYear(input)
+  }
 
   /* Set Habits */
   let habitList = [];
@@ -35,11 +45,8 @@ const HabitLines = () => {
   return (
     <Container fluid>
       <Row className="month mb-3">
-        <Col xs={{ offset: 2 }}>
-          <Dropdown>
-            <Dropdown.Toggle variant="dark" size="lg">{month}</Dropdown.Toggle>
-          </Dropdown>
-        </Col>
+        <MonthDropdown month={month} months={months} changeMonth={changeMonth} />
+        <YearDropdown year={year} years={years} changeYear={changeYear} />
       </Row>
       <Container className="d-flex">
         <Descriptions habits={habits}/>

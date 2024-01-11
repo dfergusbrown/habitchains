@@ -20,29 +20,29 @@ const DatesnDots = ({habits, dateRow}) => {
                 return(
                 <Row className='habitRow' key={goal}>
                     <div>
-                    <div className='habitLine'>
-                        {dateRow.map(index => {
-                            const [buttonState, setButtonState] = useState(false)
-                            const handleState = () => {
-                                buttonState ? 
-                                setButtonState(false) :
-                                setButtonState(true)
-                            }
-                            
-                            return(
-                                <span 
-                                    className='circle' 
-                                    key={index}
-                                    style={
-                                        buttonState ? 
-                                        {backgroundColor: 'blue'} :
-                                        {backgroundColor: 'white'}
-                                    }
-                                    onClick={handleState}
-                                    />
-                            )
-                        })}
-                    </div>
+                        <div className='habitLine'>
+                            {dateRow.map(index => {
+                                const [buttonState, setButtonState] = useState(false)
+                                const handleState = () => {
+                                    buttonState ? 
+                                    setButtonState(false) :
+                                    setButtonState(true)
+                                }
+                                
+                                return(
+                                    <span 
+                                        className='circle' 
+                                        key={index}
+                                        style={
+                                            buttonState ? 
+                                            {backgroundColor: 'blue'} :
+                                            {backgroundColor: 'white'}
+                                        }
+                                        onClick={handleState}
+                                        />
+                                )
+                            })}
+                        </div>
                     </div>
                 </Row>
                 )
