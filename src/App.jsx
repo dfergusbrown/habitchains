@@ -1,6 +1,7 @@
 // import { Col, Container, Row } from 'react-bootstrap'
 import './App.css'
 import HabitLines from './components/HabitLines';
+import MainHeader from './components/Header';
 
 
 function App() {
@@ -8,9 +9,7 @@ function App() {
 
   return (
     <>
-      <header>
-        <div className='avatar'></div>
-      </header>
+      <MainHeader />
       <div className='mainBody'>
         <HabitLines />
       </div>

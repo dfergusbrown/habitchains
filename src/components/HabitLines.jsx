@@ -26,7 +26,7 @@ const HabitLines = () => {
   const [habits, setHabit] = useState(habitList);
 
   useEffect(() => {
-    fetch('http://localhost:3000/user/habits')
+    fetch('http://localhost:3000/habits')
     .then(response => response.json())
     .then(data => {
         setHabit(data)
