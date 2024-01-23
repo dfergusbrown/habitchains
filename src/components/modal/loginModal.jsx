@@ -5,6 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 
 const LoginModal = ({ show, handleClose }) => {
+  //FORM DATA
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -17,8 +18,14 @@ const LoginModal = ({ show, handleClose }) => {
   };
   const [errMsg, setErrMsg] = useState(null)
 
-  const handleSubmit = async () => {
-    const url = "http://localhost:3000/users/";
+  const [registered, setRegStatus] = useState(true)
+  const toggleRegisterLogin = () => {
+    registered ? setRegStatus(false) : setRegStatus(true)
+    setErrMsg(null)
+  }
+
+  const handleSubmitRegister = async () => {
+    const url = "http://localhost:3000/users/register";
     const { email, username, password } = formData;
 
     try {
@@ -47,16 +54,42 @@ const LoginModal = ({ show, handleClose }) => {
     }
   };
 
+  const handleSubmitLogin = async () => {
+    const url = "http://localhost:3000/users/login";
+    const { username, password } = formData;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response)
+      if (response.ok) {
+        alert("Success! You are logged in!");
+        handleClose();
+        // refresh habits?
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Login / Create Profile</Modal.Title>
+          <Modal.Title>{registered ? "Login" : "Create Account"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             {/* Email */}
-            <Form.Group as={Row} className="mb-3" controlId="formEmail">
+            {!registered ? <Form.Group as={Row} className="mb-3" controlId="formEmail">
               <Form.Label column sm="2">
                 Email
               </Form.Label>
@@ -69,7 +102,7 @@ const LoginModal = ({ show, handleClose }) => {
                   placeholder="email@example.com"
                 />
               </Col>
-            </Form.Group>
+            </Form.Group> : null}
 
             {/* Username */}
             <Form.Group as={Row} className="mb-3" controlId="formUsername">
@@ -108,11 +141,17 @@ const LoginModal = ({ show, handleClose }) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
+          {registered ? <Button variant="dark" onClick={toggleRegisterLogin}>
+            Create Account
+          </Button> : 
+          <Button variant="dark" onClick={toggleRegisterLogin}>
+            I have a login
+          </Button>}
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" variant="dark" onClick={handleSubmit}>
-            Login
+          <Button type="submit" variant="primary" onClick={registered ? handleSubmitLogin : handleSubmitRegister}>
+            Submit
           </Button>
         </Modal.Footer>
       </Modal>
