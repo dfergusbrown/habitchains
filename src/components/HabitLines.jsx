@@ -8,7 +8,7 @@ import ModalButton from "./modal/ModalButton";
 import MonthDropdown from "./dropdowns/monthDropdown";
 import YearDropdown from "./dropdowns/yearDropdown";
 
-const HabitLines = () => {
+const HabitLines = ({loggedIn}) => {
   /* Month Picker */
   const [month, setMonth] = useState(currentMonth)
   const changeMonth = (input) => {
@@ -26,12 +26,13 @@ const HabitLines = () => {
   const [habits, setHabit] = useState(habitList);
 
   useEffect(() => {
-    fetch('http://localhost:3000/habits')
+    fetch('http://localhost:3000/users/byId/habits')
     .then(response => response.json())
     .then(data => {
         setHabit(data)
+        console.log('logged in:', loggedIn)
     })
-  },[])
+  },[loggedIn])
 
   /* Modal */
   function addHabit(newHabit) {

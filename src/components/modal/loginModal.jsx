@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 
-const LoginModal = ({ show, handleClose }) => {
+const LoginModal = ({ show, handleClose, setLoggedIn }) => {
   //FORM DATA
   const [formData, setFormData] = useState({
     email: "",
@@ -48,6 +48,7 @@ const LoginModal = ({ show, handleClose }) => {
         alert("Success! User Created!");
         handleClose();
         // refresh habits?
+        setLoggedIn(true)
       }
     } catch (error) {
       console.log(error);
@@ -74,6 +75,7 @@ const LoginModal = ({ show, handleClose }) => {
         alert("Success! You are logged in!");
         handleClose();
         // refresh habits?
+        setLoggedIn(true)
       }
     } catch (error) {
       console.log(error);

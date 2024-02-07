@@ -2,16 +2,18 @@
 import './App.css'
 import HabitLines from './components/HabitLines';
 import MainHeader from './components/Header';
+import { useState } from 'react';
 
 
 function App() {
-
+  /* User Logged In */
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <>
-      <MainHeader />
+      <MainHeader setLoggedIn={setLoggedIn}/>
       <div className='mainBody'>
-        <HabitLines />
+        <HabitLines loggedIn={loggedIn}/>
       </div>
     </>
   )
